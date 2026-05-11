@@ -12,3 +12,8 @@
     object-fit: cover;
     border-radius: 10px;
 }
+
+.seleccionada{
+    border: 4px solid yellow;
+    transform: scale(1.05);
+}

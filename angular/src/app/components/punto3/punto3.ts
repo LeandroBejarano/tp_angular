@@ -44,16 +44,27 @@ export class Punto3 {
   seleccionarCarta(carta: any): void {
     if (!this.juegoIniciado) return;
     if (this.bloqueo) return;
-    if (carta.descubierta || carta.encontrada) return;
-    carta.descubierta = true;
+    if (carta.encontrada) return;
+    if (this.cartasSeleccionadas.includes(carta)) return;
+    if (this.cartasSeleccionadas.length >= 2) return;
     this.cartasSeleccionadas.push(carta);
-    if (this.cartasSeleccionadas.length == 2) {
-      this.verificarPareja();
+  }
+
+  intentar(): void {
+    if (this.cartasSeleccionadas.length != 2) {
+      alert('Debes seleccionar 2 cartas');
+      return;
     }
+    this.bloqueo = true;
+    this.cartasSeleccionadas.forEach(c => {
+      c.descubierta = true;
+    });
+    setTimeout(() => {
+      this.verificarPareja();
+    }, 500);
   }
 
   verificarPareja(): void {
-    this.bloqueo = true;
     let [carta1, carta2] = this.cartasSeleccionadas;
     if (carta1.img == carta2.img) {
       carta1.encontrada = true;
