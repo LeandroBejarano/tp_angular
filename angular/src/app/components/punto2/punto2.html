@@ -1,0 +1,93 @@
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">
+        Productos Destacados
+    </h2>
+
+    <!-- Boton del modal -->
+    <div class="text-end mb-3">
+        <button
+            class="btn btn-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#modalCarrito">
+            🛒 Ver Carrito ({{ carrito.length }})
+        </button>
+    </div>
+
+    <!-- Cards -->
+    <div class="row">
+        <div
+            class="col-md-4 mb-4"
+            *ngFor="let producto of productos">
+            <div class="card h-100 shadow">
+                <img
+                    [src]="producto.img"
+                    class="card-img-top"
+                    alt="Producto">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                        {{ producto.nombre }}
+                    </h5>
+                    <p class="card-text">
+                        {{ producto.descripcion }}
+                    </p>
+                    <h4 class="text-primary">
+                        $ {{ producto.precio }}
+                    </h4>
+                    <button
+                        class="btn btn-success mt-auto"
+                        (click)="agregarCarrito(producto)">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div
+    class="modal fade"
+    id="modalCarrito"
+    tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Carrito de Compras
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="carrito.length == 0">
+                    No hay productos en el carrito
+                </div>
+                <ul
+                    class="list-group"
+                    *ngIf="carrito.length > 0">
+                    <li
+                        class="list-group-item"
+                        *ngFor="let item of carrito">
+                        {{ item.nombre }}
+                        - $ {{ item.precio }}
+                    </li>
+                </ul>
+                <hr>
+                <h4>
+                    Total: $ {{ calcularTotal() }}
+                </h4>
+            </div>
+            <div class="modal-footer">
+                <button
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

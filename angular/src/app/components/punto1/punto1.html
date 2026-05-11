@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <div class="card shadow mx-auto" style="width: 28rem;">
+        <img [src]="eventos[indiceActual].img" class="card-img-top" alt="Evento">
+        <div class="card-body text-center">
+            <h3 class="card-title">
+                {{ eventos[indiceActual].nombre }}
+            </h3>
+            <p class="card-text">
+                {{ eventos[indiceActual].descripcion }}
+            </p>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary" (click)="anterior()">
+                    Anterior
+                </button>
+                <button class="btn btn-success" (click)="siguiente()">
+                    Siguiente
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
