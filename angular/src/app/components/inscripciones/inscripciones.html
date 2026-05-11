@@ -1,0 +1,131 @@
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">
+        Inscripción a Cursos
+    </h2>
+    <div class="card p-4 shadow">
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>DNI</label>
+                <input type="number" class="form-control" [(ngModel)]="inscripcion.dni">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Email</label>
+                <input type="email" class="form-control" [(ngModel)]="inscripcion.email">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Curso</label>
+                <input type="text" class="form-control" [(ngModel)]="inscripcion.curso">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Fecha</label>
+                <input type="date" class="form-control" [(ngModel)]="inscripcion.fechaInscripcion">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Precio</label>
+                <input type="number" class="form-control" [(ngModel)]="inscripcion.precio" (change)="calcularTotal()">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Categoría</label>
+                <select class="form-select" [(ngModel)]="inscripcion.categoriaAlumno" (change)="calcularTotal()">
+                    <option value="0">
+                        Seleccione
+                    </option>
+                    <option value="1">
+                        Estudiante
+                    </option>
+                    <option value="2">
+                        Egresado
+                    </option>
+                    <option value="3">
+                        Particular
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- ngIf -->
+        <div class="alert alert-success" *ngIf="inscripcion.precio > 0
+            && inscripcion.categoriaAlumno > 0">
+            Total:
+            {{ inscripcion.total | currency }}
+        </div>
+        <button class="btn btn-primary" (click)="registrar()">
+            REGISTRAR
+        </button>
+    </div>
+
+    <!-- Tabla -->
+
+    <div class="mt-5">
+        <h3>
+            Inscripciones
+        </h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Email</th>
+                    <th>Curso</th>
+                    <th>Fecha</th>
+                    <th>Categoría</th>
+                    <th>Total</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of obtenerInscripciones(); let i=index">
+                    <td>{{ item.dni }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.curso }}</td>
+                    <td>
+                        {{ item.fechaInscripcion | date:'dd/MM/yyyy' }}
+                    </td>
+                    <td>
+                        {{
+                        item.categoriaAlumno == 1
+                        ? 'Estudiante'
+                        : item.categoriaAlumno == 2
+                        ? 'Egresado'
+                        : 'Particular'
+                        }}
+                    </td>
+                    <td>
+                        {{ item.total | currency }}
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="eliminar(i)">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Resumen -->
+
+    <div class="card mt-4 p-3 shadow">
+        <h4>
+            Resumen
+        </h4>
+        <p>
+            Estudiantes:
+            {{ contarCategoria(1) }}
+        </p>
+        <p>
+            Egresados:
+            {{ contarCategoria(2) }}
+        </p>
+        <p>
+            Particulares:
+            {{ contarCategoria(3) }}
+        </p>
+        <h5>
+            Total General:
+            {{ totalGeneral() | currency }}
+        </h5>
+    </div>
+
+</div>
