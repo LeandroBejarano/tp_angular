@@ -1,0 +1,14 @@
+.carta{
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.carta:hover{
+    transform: scale(1.05);
+}
+
+.carta img{
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
