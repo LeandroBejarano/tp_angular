@@ -14,21 +14,21 @@ export class Punto2 {
     {
       nombre: 'Notebook Asus 13L',
       descripcion: 'Disco SSD 40GB - 15 pulgadas',
-      img: 'placeholder.png',
+      img: 'notebook.jpg',
       precio: 180000
     },
 
     {
       nombre: 'Monitor LG 24',
       descripcion: 'Monitor Full HD',
-      img: 'placeholder.png',
+      img: 'monitor.jpg',
       precio: 200000
     },
 
     {
       nombre: 'Mouse Gamer',
       descripcion: 'RGB inalámbrico',
-      img: 'placeholder.png',
+      img: 'mouse.jpg',
       precio: 10000
     }
 

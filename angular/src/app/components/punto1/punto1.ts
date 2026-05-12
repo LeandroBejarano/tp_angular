@@ -14,17 +14,17 @@ export class Punto1 {
     {
       nombre: 'Taller de Yoga',
       descripcion: 'Clase de relajación y meditación.',
-      img: 'assets/evento01.jpg'
+      img: 'yoga.png'
     },
     {
       nombre: 'Conferencia Tech',
       descripcion: 'Evento sobre nuevas tecnologías.',
-      img: 'assets/evento02.jpg'
+      img: 'tech.jpg'
     },
     {
       nombre: 'Festival de Música',
       descripcion: 'Presentación de bandas en vivo.',
-      img: 'assets/evento03.jpg'
+      img: 'festival.jpg'
     }
   ];
 
