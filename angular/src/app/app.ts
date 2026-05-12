@@ -6,10 +6,12 @@ import { Punto3 } from './components/punto3/punto3';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Inscripciones } from './components/inscripciones/inscripciones';
+import { RouterModule } from '@angular/router';
+import { Navbar } from './layout/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Punto1, Punto2, Punto3, CommonModule, FormsModule, Inscripciones],
+  imports: [RouterOutlet, Punto1, Punto2, Punto3, CommonModule, FormsModule, Inscripciones, RouterModule, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.css',
   standalone: true
